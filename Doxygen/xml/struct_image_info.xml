@@ -1,0 +1,408 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="struct_image_info" kind="struct" prot="public">
+    <compoundname>ImageInfo</compoundname>
+    <includes refid="image_8h" local="no">image.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_image_info_1ab5faff5d24ab11a29a3654a509b972f4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::bitpix</definition>
+        <argsstring></argsstring>
+        <name>bitpix</name>
+        <briefdescription>
+<para>BITPIX keyword of FITS image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="20" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::nextend</definition>
+        <argsstring></argsstring>
+        <name>nextend</name>
+        <briefdescription>
+<para>Number of total extensions in FITS image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="22" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1adf4d6a578fb0e621295092443d738e36" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::naxis</definition>
+        <argsstring></argsstring>
+        <name>naxis</name>
+        <briefdescription>
+<para>Dimension FITS images. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="24" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::naxis1</definition>
+        <argsstring></argsstring>
+        <name>naxis1</name>
+        <briefdescription>
+<para>Dimension of X-axis. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="26" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::naxis2</definition>
+        <argsstring></argsstring>
+        <name>naxis2</name>
+        <briefdescription>
+<para>Dimension of Y-axis. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="28" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1ad131f2d7aca673a30b88400499bface9" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::naxis3</definition>
+        <argsstring></argsstring>
+        <name>naxis3</name>
+        <briefdescription>
+<para>Dimension of Z-axis or time sequence. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="30" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1ac043184743b35c83aa2ede274b0aac70" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::bzero</definition>
+        <argsstring></argsstring>
+        <name>bzero</name>
+        <briefdescription>
+<para>Number for image wrapping. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="32" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a27a33f5cc6813d508338a228089c6e8a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::mdcoords</definition>
+        <argsstring></argsstring>
+        <name>mdcoords</name>
+        <briefdescription>
+<para>Steps of micro-dithering. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="34" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a86cdb5d22894bec4aa93466dd3102517" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::chipbias</definition>
+        <argsstring></argsstring>
+        <name>chipbias</name>
+        <briefdescription>
+<para>Chip bias level. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="36" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a4cf6e6889566fdab17bf69f3e905beb0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ImageInfo::scfowler</definition>
+        <argsstring></argsstring>
+        <name>scfowler</name>
+        <briefdescription>
+<para>Pairs of reads in science Fowler sampling. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="38" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a07f6264ce16923314276990bf5d4898d" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::exptime</definition>
+        <argsstring></argsstring>
+        <name>exptime</name>
+        <briefdescription>
+<para>Exposure time. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="40" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1ac49a6b51126fc9bbd5f167857617fbc3" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::ra</definition>
+        <argsstring></argsstring>
+        <name>ra</name>
+        <briefdescription>
+<para>Target Right Ascension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="42" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a6680ea147b20f926793606add4344bb3" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::dec</definition>
+        <argsstring></argsstring>
+        <name>dec</name>
+        <briefdescription>
+<para>Target Declination. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="44" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a62b39e1ddf8a5914452bcc8b9db61139" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::zra</definition>
+        <argsstring></argsstring>
+        <name>zra</name>
+        <briefdescription>
+<para>Instrument RA. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="46" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a49ea6dcd7d9b146faab6a5a96b74b1bc" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::zdec</definition>
+        <argsstring></argsstring>
+        <name>zdec</name>
+        <briefdescription>
+<para>instrument Dec </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="48" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a108fe51cb0ae5573334327c955c691c6" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::wcrotate</definition>
+        <argsstring></argsstring>
+        <name>wcrotate</name>
+        <briefdescription>
+<para>Rotation of the camera. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="50" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a9329c482777cf020ced5487f71dfca3a" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double ImageInfo::rdtime</definition>
+        <argsstring></argsstring>
+        <name>rdtime</name>
+        <briefdescription>
+<para>Single readout time for Non-linear correction. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="52" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a81a5af8b60b60c2dd51134b4b53687ca" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdx1</definition>
+        <argsstring></argsstring>
+        <name>mdx1</name>
+        <briefdescription>
+<para>MD coordinate X1. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="54" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a1ac714441bbbc61e992027b955c8cd94" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdy1</definition>
+        <argsstring></argsstring>
+        <name>mdy1</name>
+        <briefdescription>
+<para>MD coordinate Y1. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="56" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1af75101cbfe0cf9951be1234faf071a39" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdx2</definition>
+        <argsstring></argsstring>
+        <name>mdx2</name>
+        <briefdescription>
+<para>MD coordinate X2. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="58" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1acc65584a627c38594e69cda01374359e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdy2</definition>
+        <argsstring></argsstring>
+        <name>mdy2</name>
+        <briefdescription>
+<para>MD coordinate Y2. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="60" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1aff27e7dfcb0b85e1bfc67494cbc3932a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdx3</definition>
+        <argsstring></argsstring>
+        <name>mdx3</name>
+        <briefdescription>
+<para>MD coordinate X3. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="62" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1ae016e198384f44c3aeec770c1ed51877" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdy3</definition>
+        <argsstring></argsstring>
+        <name>mdy3</name>
+        <briefdescription>
+<para>MD coordinate Y3. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="64" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a1c2a6415dae23baaa661fa851dad6b8d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdx4</definition>
+        <argsstring></argsstring>
+        <name>mdx4</name>
+        <briefdescription>
+<para>MD coordinate X4. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="66" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1a9e412e6c0c5f2334fbfe498f6a0836bd" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float ImageInfo::mdy4</definition>
+        <argsstring></argsstring>
+        <name>mdy4</name>
+        <briefdescription>
+<para>MD coordinate Y4. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="68" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1ac9bbba8834f8357dbe67c0fbb8926cd2" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ImageInfo::filter</definition>
+        <argsstring></argsstring>
+        <name>filter</name>
+        <briefdescription>
+<para>Filter for FITS image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="70" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1af34df148ce055bd0c57091f6be0d427a" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* ImageInfo::date</definition>
+        <argsstring></argsstring>
+        <name>date</name>
+        <briefdescription>
+<para>Date of observation in readable format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="72" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_image_info_1aca34b5385f1847093160498aad287aa9" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long ImageInfo::jd</definition>
+        <argsstring></argsstring>
+        <name>jd</name>
+        <briefdescription>
+<para>Date of observation in Julian Day. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="74" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This the structure for storing the FITS header information. This structure can be used for WIRCam images. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="18" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="18" bodyend="75"/>
+    <listofallmembers>
+      <member refid="struct_image_info_1ab5faff5d24ab11a29a3654a509b972f4" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>bitpix</name></member>
+      <member refid="struct_image_info_1ac043184743b35c83aa2ede274b0aac70" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>bzero</name></member>
+      <member refid="struct_image_info_1a86cdb5d22894bec4aa93466dd3102517" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>chipbias</name></member>
+      <member refid="struct_image_info_1af34df148ce055bd0c57091f6be0d427a" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>date</name></member>
+      <member refid="struct_image_info_1a6680ea147b20f926793606add4344bb3" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>dec</name></member>
+      <member refid="struct_image_info_1a07f6264ce16923314276990bf5d4898d" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>exptime</name></member>
+      <member refid="struct_image_info_1ac9bbba8834f8357dbe67c0fbb8926cd2" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>filter</name></member>
+      <member refid="struct_image_info_1aca34b5385f1847093160498aad287aa9" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>jd</name></member>
+      <member refid="struct_image_info_1a27a33f5cc6813d508338a228089c6e8a" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdcoords</name></member>
+      <member refid="struct_image_info_1a81a5af8b60b60c2dd51134b4b53687ca" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdx1</name></member>
+      <member refid="struct_image_info_1af75101cbfe0cf9951be1234faf071a39" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdx2</name></member>
+      <member refid="struct_image_info_1aff27e7dfcb0b85e1bfc67494cbc3932a" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdx3</name></member>
+      <member refid="struct_image_info_1a1c2a6415dae23baaa661fa851dad6b8d" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdx4</name></member>
+      <member refid="struct_image_info_1a1ac714441bbbc61e992027b955c8cd94" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdy1</name></member>
+      <member refid="struct_image_info_1acc65584a627c38594e69cda01374359e" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdy2</name></member>
+      <member refid="struct_image_info_1ae016e198384f44c3aeec770c1ed51877" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdy3</name></member>
+      <member refid="struct_image_info_1a9e412e6c0c5f2334fbfe498f6a0836bd" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>mdy4</name></member>
+      <member refid="struct_image_info_1adf4d6a578fb0e621295092443d738e36" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>naxis</name></member>
+      <member refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>naxis1</name></member>
+      <member refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>naxis2</name></member>
+      <member refid="struct_image_info_1ad131f2d7aca673a30b88400499bface9" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>naxis3</name></member>
+      <member refid="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>nextend</name></member>
+      <member refid="struct_image_info_1ac49a6b51126fc9bbd5f167857617fbc3" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>ra</name></member>
+      <member refid="struct_image_info_1a9329c482777cf020ced5487f71dfca3a" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>rdtime</name></member>
+      <member refid="struct_image_info_1a4cf6e6889566fdab17bf69f3e905beb0" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>scfowler</name></member>
+      <member refid="struct_image_info_1a108fe51cb0ae5573334327c955c691c6" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>wcrotate</name></member>
+      <member refid="struct_image_info_1a49ea6dcd7d9b146faab6a5a96b74b1bc" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>zdec</name></member>
+      <member refid="struct_image_info_1a62b39e1ddf8a5914452bcc8b9db61139" prot="public" virt="non-virtual"><scope>ImageInfo</scope><name>zra</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

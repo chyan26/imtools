@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="image_8h" kind="file">
+    <compoundname>image.h</compoundname>
+    <includedby refid="image_8cpp" local="yes">image.cpp</includedby>
+    <includedby refid="process_8cpp" local="yes">process.cpp</includedby>
+    <includedby refid="readimage_8cpp" local="yes">readimage.cpp</includedby>
+    <invincdepgraph>
+      <node id="20">
+        <label>image.h</label>
+        <link refid="image.h"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>readimage.cpp</label>
+        <link refid="readimage_8cpp"/>
+      </node>
+      <node id="21">
+        <label>image.cpp</label>
+        <link refid="image_8cpp"/>
+      </node>
+      <node id="22">
+        <label>process.cpp</label>
+        <link refid="process_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_image_info" prot="public">ImageInfo</innerclass>
+    <innerclass refid="class_image" prot="public">Image</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class defines the basic operations for FITS image. Created on: Aug 13, 2010 Author: chyan </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="preprocessor">#ifndef<sp/>IMAGE_H_</highlight></codeline>
+<codeline lineno="9"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#define<sp/>IMAGE_H_</highlight></codeline>
+<codeline lineno="10"><highlight class="preprocessor"></highlight></codeline>
+<codeline lineno="17"></codeline>
+<codeline lineno="18" refid="struct_image_info" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_image_info" kindref="compound" tooltip="This the structure for storing the FITS header information. This structure can be used for WIRCam ima...">ImageInfo</ref>{</highlight></codeline>
+<codeline lineno="20" refid="struct_image_info_1ab5faff5d24ab11a29a3654a509b972f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1ab5faff5d24ab11a29a3654a509b972f4" kindref="member" tooltip="BITPIX keyword of FITS image.">bitpix</ref>;</highlight></codeline>
+<codeline lineno="22" refid="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" kindref="member" tooltip="Number of total extensions in FITS image.">nextend</ref>;</highlight></codeline>
+<codeline lineno="24" refid="struct_image_info_1adf4d6a578fb0e621295092443d738e36" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1adf4d6a578fb0e621295092443d738e36" kindref="member" tooltip="Dimension FITS images.">naxis</ref>;</highlight></codeline>
+<codeline lineno="26" refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>;</highlight></codeline>
+<codeline lineno="28" refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>;</highlight></codeline>
+<codeline lineno="30" refid="struct_image_info_1ad131f2d7aca673a30b88400499bface9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1ad131f2d7aca673a30b88400499bface9" kindref="member" tooltip="Dimension of Z-axis or time sequence.">naxis3</ref>;</highlight></codeline>
+<codeline lineno="32" refid="struct_image_info_1ac043184743b35c83aa2ede274b0aac70" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1ac043184743b35c83aa2ede274b0aac70" kindref="member" tooltip="Number for image wrapping.">bzero</ref>;</highlight></codeline>
+<codeline lineno="34" refid="struct_image_info_1a27a33f5cc6813d508338a228089c6e8a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a27a33f5cc6813d508338a228089c6e8a" kindref="member" tooltip="Steps of micro-dithering.">mdcoords</ref>;</highlight></codeline>
+<codeline lineno="36" refid="struct_image_info_1a86cdb5d22894bec4aa93466dd3102517" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a86cdb5d22894bec4aa93466dd3102517" kindref="member" tooltip="Chip bias level.">chipbias</ref>;</highlight></codeline>
+<codeline lineno="38" refid="struct_image_info_1a4cf6e6889566fdab17bf69f3e905beb0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a4cf6e6889566fdab17bf69f3e905beb0" kindref="member" tooltip="Pairs of reads in science Fowler sampling.">scfowler</ref>;</highlight></codeline>
+<codeline lineno="40" refid="struct_image_info_1a07f6264ce16923314276990bf5d4898d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a07f6264ce16923314276990bf5d4898d" kindref="member" tooltip="Exposure time.">exptime</ref>;</highlight></codeline>
+<codeline lineno="42" refid="struct_image_info_1ac49a6b51126fc9bbd5f167857617fbc3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1ac49a6b51126fc9bbd5f167857617fbc3" kindref="member" tooltip="Target Right Ascension.">ra</ref>;</highlight></codeline>
+<codeline lineno="44" refid="struct_image_info_1a6680ea147b20f926793606add4344bb3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a6680ea147b20f926793606add4344bb3" kindref="member" tooltip="Target Declination.">dec</ref>;</highlight></codeline>
+<codeline lineno="46" refid="struct_image_info_1a62b39e1ddf8a5914452bcc8b9db61139" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a62b39e1ddf8a5914452bcc8b9db61139" kindref="member" tooltip="Instrument RA.">zra</ref>;</highlight></codeline>
+<codeline lineno="48" refid="struct_image_info_1a49ea6dcd7d9b146faab6a5a96b74b1bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a49ea6dcd7d9b146faab6a5a96b74b1bc" kindref="member" tooltip="instrument Dec">zdec</ref>;</highlight></codeline>
+<codeline lineno="50" refid="struct_image_info_1a108fe51cb0ae5573334327c955c691c6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a108fe51cb0ae5573334327c955c691c6" kindref="member" tooltip="Rotation of the camera.">wcrotate</ref>;</highlight></codeline>
+<codeline lineno="52" refid="struct_image_info_1a9329c482777cf020ced5487f71dfca3a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a9329c482777cf020ced5487f71dfca3a" kindref="member" tooltip="Single readout time for Non-linear correction.">rdtime</ref>;</highlight></codeline>
+<codeline lineno="54" refid="struct_image_info_1a81a5af8b60b60c2dd51134b4b53687ca" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a81a5af8b60b60c2dd51134b4b53687ca" kindref="member" tooltip="MD coordinate X1.">mdx1</ref>;</highlight></codeline>
+<codeline lineno="56" refid="struct_image_info_1a1ac714441bbbc61e992027b955c8cd94" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a1ac714441bbbc61e992027b955c8cd94" kindref="member" tooltip="MD coordinate Y1.">mdy1</ref>;</highlight></codeline>
+<codeline lineno="58" refid="struct_image_info_1af75101cbfe0cf9951be1234faf071a39" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1af75101cbfe0cf9951be1234faf071a39" kindref="member" tooltip="MD coordinate X2.">mdx2</ref>;</highlight></codeline>
+<codeline lineno="60" refid="struct_image_info_1acc65584a627c38594e69cda01374359e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1acc65584a627c38594e69cda01374359e" kindref="member" tooltip="MD coordinate Y2.">mdy2</ref>;</highlight></codeline>
+<codeline lineno="62" refid="struct_image_info_1aff27e7dfcb0b85e1bfc67494cbc3932a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1aff27e7dfcb0b85e1bfc67494cbc3932a" kindref="member" tooltip="MD coordinate X3.">mdx3</ref>;</highlight></codeline>
+<codeline lineno="64" refid="struct_image_info_1ae016e198384f44c3aeec770c1ed51877" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1ae016e198384f44c3aeec770c1ed51877" kindref="member" tooltip="MD coordinate Y3.">mdy3</ref>;</highlight></codeline>
+<codeline lineno="66" refid="struct_image_info_1a1c2a6415dae23baaa661fa851dad6b8d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a1c2a6415dae23baaa661fa851dad6b8d" kindref="member" tooltip="MD coordinate X4.">mdx4</ref>;</highlight></codeline>
+<codeline lineno="68" refid="struct_image_info_1a9e412e6c0c5f2334fbfe498f6a0836bd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1a9e412e6c0c5f2334fbfe498f6a0836bd" kindref="member" tooltip="MD coordinate Y4.">mdy4</ref>;</highlight></codeline>
+<codeline lineno="70" refid="struct_image_info_1ac9bbba8834f8357dbe67c0fbb8926cd2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="struct_image_info_1ac9bbba8834f8357dbe67c0fbb8926cd2" kindref="member" tooltip="Filter for FITS image.">filter</ref>;</highlight></codeline>
+<codeline lineno="72" refid="struct_image_info_1af34df148ce055bd0c57091f6be0d427a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="struct_image_info_1af34df148ce055bd0c57091f6be0d427a" kindref="member" tooltip="Date of observation in readable format.">date</ref>;</highlight></codeline>
+<codeline lineno="74" refid="struct_image_info_1aca34b5385f1847093160498aad287aa9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="struct_image_info_1aca34b5385f1847093160498aad287aa9" kindref="member" tooltip="Date of observation in Julian Day.">jd</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="class_image" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>Filename;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fitsfile*<sp/>fptr;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_image_info" kindref="compound" tooltip="This the structure for storing the FITS header information. This structure can be used for WIRCam ima...">ImageInfo</ref><sp/>HeaderInfo;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="111" refid="class_image_1a65407137e4f4bec083416a287d752ef5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_image_1acb1e89f3eb8721d374167d59e2e4e1e6" kindref="member">setFilename</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>filename);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="class_image_1aca3edfeb22cfb20a20a8014e39cc77aa" kindref="member">getFilename</ref>();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1a7d94af737cc2b2fd9bc2ab1f31ab02b6" kindref="member">openFitfile</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1a5f84b0aca62b184d07801f9960a21b6c" kindref="member">closeFitfile</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1a40affaec752136e62e6a49cb84cda025" kindref="member">setImageHeader</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="struct_image_info" kindref="compound" tooltip="This the structure for storing the FITS header information. This structure can be used for WIRCam ima...">ImageInfo</ref><sp/><ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1abe3422ad6771c4683cf60817ed66fb1f" kindref="member">setImageArray</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/><ref refid="class_image_1ae48ffbcc6275ff2a32174568ca80079d" kindref="member">getImageArray</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1ae4d86df318224ce9d44ff30943c3632d" kindref="member">SaveImage16B</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_image_1afafc3b83b2f7da8e9579ac9d01c7d17a" kindref="member">SaveImage32B</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*filename);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_image_1a58edd1c45b4faeb5f789b0d036d02313" kindref="member">Image</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_image_1a58edd1c45b4faeb5f789b0d036d02313" kindref="member">Image</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>filename);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_image_1a0294f63700543e11c0f0da85601c7ae5" kindref="member">~Image</ref>();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>IMAGE_H_<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/image.h"/>
+  </compounddef>
+</doxygen>

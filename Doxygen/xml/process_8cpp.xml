@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="process_8cpp" kind="file">
+    <compoundname>process.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">string</includes>
+    <includes local="no">map</includes>
+    <includes local="no">math.h</includes>
+    <includes local="yes">fitsio.h</includes>
+    <includes refid="image_8h" local="yes">image.h</includes>
+    <includes refid="process_8h" local="yes">process.h</includes>
+    <includes refid="calculate_8h" local="yes">calculate.h</includes>
+    <incdepgraph>
+      <node id="29">
+        <label>fitsio.h</label>
+      </node>
+      <node id="31">
+        <label>process.h</label>
+        <link refid="process_8h"/>
+      </node>
+      <node id="30">
+        <label>image.h</label>
+        <link refid="image_8h"/>
+      </node>
+      <node id="32">
+        <label>calculate.h</label>
+        <link refid="calculate_8h"/>
+      </node>
+      <node id="26">
+        <label>string</label>
+      </node>
+      <node id="27">
+        <label>map</label>
+      </node>
+      <node id="24">
+        <label>process.cpp</label>
+        <link refid="process.cpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>math.h</label>
+      </node>
+      <node id="25">
+        <label>iostream</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>This file contains the class used for image processing. </para>    </briefdescription>
+    <detaileddescription>
+<para>In this file, the class <ref refid="class_process" kindref="compound">Process</ref> is defined. This class contains several method for WIRCam image reduction. Including reference pixel subtraction, non-linear correction and image detrending itself.</para><para>Created on: Aug 17, 2010 Author: chyan </para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="12"><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;fitsio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="image_8h" kindref="compound">image.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="process_8h" kindref="compound" tooltip="The prototype for class process and related structures Created on: Aug 17, 2010 Author: chyan...">process.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="calculate_8h" kindref="compound">calculate.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_process_1a76fc44339fcfa90892167bebe4107805" kindref="member">Process::subRefPixel</ref>(<ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>*raw){</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,y,offset;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>slices,<sp/>s;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>temp<sp/>=NULL;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal"><sp/>=NULL;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>med;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Subtracting<sp/>reference<sp/>pixel.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((temp=(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*)malloc(raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)))<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;logonly:<sp/>(%s:%s:%d)<sp/>unable<sp/>to<sp/>allocate<sp/>memory<sp/>for<sp/>subtracting&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>reference<sp/>pixel.\n&quot;</highlight><highlight class="normal">,<sp/>__FILE__,<sp/>__func__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((</highlight><highlight class="keyword">final</highlight><highlight class="normal">=(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*)malloc(raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref><sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(float)))<sp/>==<sp/>NULL){</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;logonly:<sp/>(%s:%s:%d)<sp/>unable<sp/>to<sp/>allocate<sp/>memory<sp/>for<sp/>subtracting&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/>reference<sp/>pixel.\n&quot;</highlight><highlight class="normal">,<sp/>__FILE__,<sp/>__func__,<sp/>__LINE__);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>slices<sp/>=<sp/>raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1ad131f2d7aca673a30b88400499bface9" kindref="member" tooltip="Dimension of Z-axis or time sequence.">naxis3</ref><sp/>*<sp/>raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" kindref="member" tooltip="Number of total extensions in FITS image.">nextend</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(s=0;s&lt;slices;s++){</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Calculate<sp/>the<sp/>offset<sp/>of<sp/>images*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>offset<sp/>=<sp/>s*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Loop<sp/>through<sp/>all<sp/>pixels<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=0;x&lt;raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>;x++){</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Select<sp/>first<sp/>and<sp/>last<sp/>4<sp/>columm<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x==0||x==1||x==2||x==3||x==2044||x==2045||x==2046||x==2047){</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Take<sp/>all<sp/>pixel<sp/>values<sp/>and<sp/>store<sp/>into<sp/>buffer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;y&lt;raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>;y++){</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>temp[y]<sp/>=<sp/>raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(offset)+x+y*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>];</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">[y]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>med<sp/>=<sp/><ref refid="calculate_8cpp_1a486ca264d9e2fdf49d4767ca89b06477" kindref="member" tooltip="This function is the quick_select routine based on the algorithm found in Numerical Recipes in C...">GetMedian</ref>(temp,<sp/>raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Subtract<sp/>median<sp/>value<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;y&lt;raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>;y++){</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">final</highlight><highlight class="normal">[y]=</highlight><highlight class="keyword">final</highlight><highlight class="normal">[y]+(raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(offset)+x+y*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>]-med)/8;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=4;x&lt;raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>-4;x++){</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;y&lt;raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>;y++){</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(offset)+x+y*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>]=</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(offset)+x+y*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>]+</highlight><highlight class="keyword">final</highlight><highlight class="normal">[y];</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(temp);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(</highlight><highlight class="keyword">final</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_process_1aef09b2c69df2a1492cb4740e37fa9dc0" kindref="member">Process::NonLinearCorrect</ref>(<ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>*raw){</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,ext,size,index;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//float<sp/>median,meddev;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*cds=NULL;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*refc=NULL;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>*rawc=NULL;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//struct<sp/>NonLinearInfo<sp/>nlcinfo;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#ifdef<sp/>DEBUG</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Apply<sp/>non-linear<sp/>corrections.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endif</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size=raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1af18827a7dba925a3612a67838ff5ea4f" kindref="member" tooltip="Dimension of X-axis.">naxis1</ref>*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a17b1ed333dd52123062e2feae02ef0c5" kindref="member" tooltip="Dimension of Y-axis.">naxis2</ref>*raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1ad131f2d7aca673a30b88400499bface9" kindref="member" tooltip="Dimension of Z-axis or time sequence.">naxis3</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Go<sp/>through<sp/>the<sp/>NLC<sp/>date<sp/>to<sp/>determine<sp/>index<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;4;i++){</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1aca34b5385f1847093160498aad287aa9" kindref="member" tooltip="Date of observation in Julian Day.">jd</ref><sp/>&gt;<sp/>nlcinfo.<ref refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" kindref="member" tooltip="Julian day of derived non-lineae correction matrix.">jd</ref>[i]){</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index=i;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index=0;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#ifdef<sp/>DEBUG</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Use<sp/>NLC<sp/>matrix<sp/>for<sp/>%s,<sp/>the<sp/>%ith<sp/>set.\n&quot;</highlight><highlight class="normal">,(nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[index]),index+1);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>refc<sp/>=<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*)malloc(size*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rawc<sp/>=<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*)malloc(size*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cds<sp/>=<sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*)malloc(size*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Go<sp/>through<sp/>each<sp/>extension<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(ext=1;ext&lt;=raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a59ee537d1d195f29bfeafcc52351209b" kindref="member" tooltip="Number of total extensions in FITS image.">nextend</ref>;ext++){</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;ext=<sp/>%d\n&quot;,ext);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(cds,<sp/>&amp;(raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(ext-1)*size]),<sp/>size*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Go<sp/>through<sp/>each<sp/>slice<sp/>and<sp/>pixel*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;size;i++){</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>refc[i]=<sp/>raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(ext-1)*size+i]*(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a9329c482777cf020ced5487f71dfca3a" kindref="member" tooltip="Single readout time for Non-linear correction.">rdtime</ref>*</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((float)raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a4cf6e6889566fdab17bf69f3e905beb0" kindref="member" tooltip="Pairs of reads in science Fowler sampling.">scfowler</ref>+1.0)/(raw-&gt;<ref refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" kindref="member">getImageHeader</ref>().<ref refid="struct_image_info_1a07f6264ce16923314276990bf5d4898d" kindref="member" tooltip="Exposure time.">exptime</ref>*2.0);<sp/><sp/></highlight><highlight class="comment">/*<sp/>Estimate<sp/>the<sp/>the<sp/>REF<sp/>level*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rawc[i]=cds[i]+refc[i];</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>refc[i]=<sp/>refc[i]*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][0])+pow(refc[i],2)*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][1])+</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pow(refc[i],3)*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][2]);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rawc[i]=<sp/>rawc[i]*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][0])+pow(rawc[i],2)*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][1])+</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pow(rawc[i],3)*(nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[index][ext-1][2]);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>raw-&gt;<ref refid="class_image_1a65407137e4f4bec083416a287d752ef5" kindref="member">ImageArray</ref>[(ext-1)*size+i]=<sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)(rawc[i]<sp/>-<sp/>refc[i]);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(cds);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(refc);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(rawc);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_process_1a88facf98f0343a0c1146a7d8f5650f25" kindref="member">Process::setNLCInfo</ref>(){</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,j,k;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>The<sp/>first<sp/>index<sp/>is<sp/>the<sp/>date<sp/>index,<sp/>the<sp/>second<sp/>is<sp/>EXTENDION<sp/>and<sp/>the<sp/>third<sp/>is<sp/>parameter<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>param[MaxNLCMatrix][MaxChipInstalled][3]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{{1.0,0.0,0.0},</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{1.0,0.0,0.0},</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{1.0,0.0,0.0},</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{1.0,0.0,0.0}},</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{{0.994684,3.15674e-07,4.56215e-11},</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.993023,1.57013e-06,3.68920e-11},</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.992029,1.72587e-06,3.43993e-11},</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.995496,8.62247e-07,5.30238e-11}},</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{{0.998810,7.92059e-07,5.39334e-11},</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.996922,1.28674e-06,4.18800e-11},</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.998038,1.15189e-06,4.63836e-11},</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.996537,9.29331e-07,5.25666e-11}},</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{{0.991276,1.72141e-06,7.57266e-12},</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.993746,1.82717e-06,1.93950e-11},</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.994254,1.92776e-06,1.69437e-11},</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{0.994799,1.49037e-06,2.85603e-11}}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>In<sp/>put<sp/>transfromation<sp/>metrixes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;MaxNLCMatrix;i++){</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[i]=(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)malloc(<ref refid="process_8h_1a0a013ed97f1deb75ab523961dc2f1c1f" kindref="member">MaxStringLength</ref>*</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j=0;j&lt;MaxChipInstalled;j++){</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(k=0;k&lt;3;k++){</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" kindref="member" tooltip="The non-linear correction correction matrix for each chip.">param</ref>[i][j][k]=param[i][j][k];</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy((nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[0]),</highlight><highlight class="stringliteral">&quot;20060818&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy((nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[1]),</highlight><highlight class="stringliteral">&quot;20060819&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy((nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[2]),</highlight><highlight class="stringliteral">&quot;20070716&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strcpy((nlcinfo.<ref refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" kindref="member" tooltip="Date of derived non-linear correction matrix.">date</ref>[3]),</highlight><highlight class="stringliteral">&quot;20080401&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" kindref="member" tooltip="Julian day of derived non-lineae correction matrix.">jd</ref>[0]=<ref refid="calculate_8cpp_1a95dac4e038745495a6370c2ac585eb8e" kindref="member" tooltip="Convert a date string to Julian day.">str2jd</ref>(</highlight><highlight class="stringliteral">&quot;20060818&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" kindref="member" tooltip="Julian day of derived non-lineae correction matrix.">jd</ref>[1]=<ref refid="calculate_8cpp_1a95dac4e038745495a6370c2ac585eb8e" kindref="member" tooltip="Convert a date string to Julian day.">str2jd</ref>(</highlight><highlight class="stringliteral">&quot;20060819&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" kindref="member" tooltip="Julian day of derived non-lineae correction matrix.">jd</ref>[2]=<ref refid="calculate_8cpp_1a95dac4e038745495a6370c2ac585eb8e" kindref="member" tooltip="Convert a date string to Julian day.">str2jd</ref>(</highlight><highlight class="stringliteral">&quot;20070716&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nlcinfo.<ref refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" kindref="member" tooltip="Julian day of derived non-lineae correction matrix.">jd</ref>[3]=<ref refid="calculate_8cpp_1a95dac4e038745495a6370c2ac585eb8e" kindref="member" tooltip="Convert a date string to Julian day.">str2jd</ref>(</highlight><highlight class="stringliteral">&quot;20080401&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><ref refid="struct_non_linear_info" kindref="compound" tooltip="This structure is used for storing correction matrix when carrying out non-linear correction...">NonLinearInfo</ref><sp/><ref refid="class_process_1ae8c87d4c3ebcdfa12af6360b772a566b" kindref="member">Process::getNLCInfo</ref>(){</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nlcinfo;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_process_1a1186d97a620798f5a1bec08cd6b0bae6" kindref="member">Process::detrendImage</ref>(<ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>*raw,<sp/><ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>*flat,<sp/><ref refid="class_image" kindref="compound" tooltip="The basic images class of image operation.">Image</ref><sp/>*dark){</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><ref refid="class_process_1a9f4553eac74c657bb451f390c17d6bea" kindref="member">Process::Process</ref>(){</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_process_1a88facf98f0343a0c1146a7d8f5650f25" kindref="member">setNLCInfo</ref>();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/process.cpp"/>
+  </compounddef>
+</doxygen>

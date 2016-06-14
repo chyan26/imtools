@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="class_process" kind="class" prot="public">
+    <compoundname>Process</compoundname>
+    <includes refid="process_8h" local="no">process.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_process_1a58a25d07c257626fbe49130a4df24e20" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_non_linear_info" kindref="compound">NonLinearInfo</ref></type>
+        <definition>NonLinearInfo Process::nlcinfo</definition>
+        <argsstring></argsstring>
+        <name>nlcinfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A private structure for string non-linear correction matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="37" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_process_1a76fc44339fcfa90892167bebe4107805" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Process::subRefPixel</definition>
+        <argsstring>(Image *raw)</argsstring>
+        <name>subRefPixel</name>
+        <param>
+          <type><ref refid="class_image" kindref="compound">Image</ref> *</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method for subtracting reference pixels </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="42" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="24" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_process_1aef09b2c69df2a1492cb4740e37fa9dc0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Process::NonLinearCorrect</definition>
+        <argsstring>(Image *raw)</argsstring>
+        <name>NonLinearCorrect</name>
+        <param>
+          <type><ref refid="class_image" kindref="compound">Image</ref> *</type>
+          <declname>raw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Non-linear correction method </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="48" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="90" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_process_1a88facf98f0343a0c1146a7d8f5650f25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Process::setNLCInfo</definition>
+        <argsstring>()</argsstring>
+        <name>setNLCInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Method to initialize non-linear correction matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="54" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="150" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="class_process_1ae8c87d4c3ebcdfa12af6360b772a566b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_non_linear_info" kindref="compound">NonLinearInfo</ref></type>
+        <definition>NonLinearInfo Process::getNLCInfo</definition>
+        <argsstring>()</argsstring>
+        <name>getNLCInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A public method to return the non-linear correction matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="59" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="202" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="class_process_1a1186d97a620798f5a1bec08cd6b0bae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Process::detrendImage</definition>
+        <argsstring>(Image *raw, Image *flat, Image *dark)</argsstring>
+        <name>detrendImage</name>
+        <param>
+          <type><ref refid="class_image" kindref="compound">Image</ref> *</type>
+          <declname>raw</declname>
+        </param>
+        <param>
+          <type><ref refid="class_image" kindref="compound">Image</ref> *</type>
+          <declname>flat</declname>
+        </param>
+        <param>
+          <type><ref refid="class_image" kindref="compound">Image</ref> *</type>
+          <declname>dark</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>De-trending method for raw image. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="64" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="206" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_process_1a9f4553eac74c657bb451f390c17d6bea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Process::Process</definition>
+        <argsstring>()</argsstring>
+        <name>Process</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default constructor </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="69" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.cpp" bodystart="210" bodyend="212"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8">
+        <label>Process</label>
+        <link refid="class_process"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>nlcinfo</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>NonLinearInfo</label>
+        <link refid="struct_non_linear_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="32" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="32" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_process_1a1186d97a620798f5a1bec08cd6b0bae6" prot="public" virt="non-virtual"><scope>Process</scope><name>detrendImage</name></member>
+      <member refid="class_process_1ae8c87d4c3ebcdfa12af6360b772a566b" prot="public" virt="non-virtual"><scope>Process</scope><name>getNLCInfo</name></member>
+      <member refid="class_process_1a58a25d07c257626fbe49130a4df24e20" prot="private" virt="non-virtual"><scope>Process</scope><name>nlcinfo</name></member>
+      <member refid="class_process_1aef09b2c69df2a1492cb4740e37fa9dc0" prot="public" virt="non-virtual"><scope>Process</scope><name>NonLinearCorrect</name></member>
+      <member refid="class_process_1a9f4553eac74c657bb451f390c17d6bea" prot="public" virt="non-virtual"><scope>Process</scope><name>Process</name></member>
+      <member refid="class_process_1a88facf98f0343a0c1146a7d8f5650f25" prot="public" virt="non-virtual"><scope>Process</scope><name>setNLCInfo</name></member>
+      <member refid="class_process_1a76fc44339fcfa90892167bebe4107805" prot="public" virt="non-virtual"><scope>Process</scope><name>subRefPixel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

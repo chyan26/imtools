@@ -1,0 +1,80 @@
+
+detrendtest: imdetrend
+	rm -rf $(DATAPATH)/wircamDetrend/test.fits
+	../bin/imdetrend --raw=$(DATAPATH)/wircamDetrend/1213828o.fits \
+	--dark=$(DATAPATH)/wircamDetrend/masterdark_020s_10Aw05_v100.fits \
+	--badpix=$(DATAPATH)/wircamDetrend/badpix_chihung_16bits.fits \
+	--flat=$(DATAPATH)/wircamDetrend/mastertwilightflat_Ks_10Aw05_v100.fits \
+	--out=$(DATAPATH)/wircamDetrend/test.fits --correctrefpix
+
+	
+skytest: imsky
+	../bin/imsky --filelist=$(DATAPATH)/wircamSky/1213826s.fits,$(DATAPATH)/wircamSky/1213827s.fits,\
+	$(DATAPATH)/wircamSky/1213828s.fits  --output=$(DATAPATH)/wircamSky/skytest.fits \
+	--mask=$(DATAPATH)/wircamSky/1213826m.fits,$(DATAPATH)/wircamSky/1213827m.fits,\
+	$(DATAPATH)/wircamSky/1213828m.fits 	
+
+
+crunchtest: imcrunch
+	../bin/imcrunch --input=$(DATAPATH)/wircamSky/1213826s.fits --output=$(DATAPATH)/wircamSky/crunchtest.fits \
+	--method=median
+
+skysubtest: imskysub
+	../bin/imskysub --detrend=$(DATAPATH)/wircamSkysub/1289569s.fits --sky=$(DATAPATH)/wircamSkysub/1289569y.fits \
+	--mask=$(DATAPATH)/wircamSkysub/badpix16_20110413HST185556_v100.fits --output=$(DATAPATH)/wircamSkysub/skysubtest.fits
+
+
+sextest: imsex
+	../bin/imsex --image=$(DATAPATH)/wircamSkysub/1289569s.fits \
+	--sigma=5.5 --checktype=objects \
+	--weight=$(DATAPATH)/wircamDetrend/badpix_chihung_16bits.fits \
+	--catalog=$(DATAPATH)/wircamSkysub/catalog.cat \
+	--check=$(DATAPATH)/wircamSkysub/checktest.fits 
+
+sexval: imsex
+	valgrind $(VGOPTION) \
+	../bin/imsex --image=$(DATAPATH)/wircamSkysub/1289569s.fits \
+	--sigma=5.5 --checktype=objects \
+	--weight=$(DATAPATH)/wircamDetrend/badpix_chihung_16bits.fits \
+	--catalog=$(DATAPATH)/wircamSkysub/catalog.cat \
+	--check=$(DATAPATH)/wircamSkysub/checktest.fits 
+
+masktest: immask
+	../bin/immask --image=$(DATAPATH)/wircamMask/1213826s.fits \
+	--sigma=4.5 \
+	--weight=$(DATAPATH)/wircamMask/badpix16_20110413HST185556_v100.fits \
+	--out=$(DATAPATH)/wircamMask/mask.fits 
+
+maskval: immask
+	valgrind $(VGOPTION) \
+	../bin/immask --image=$(DATAPATH)/wircamMask/1213826s.fits \
+	--sigma=4.5 \
+	--weight=$(DATAPATH)/wircamMask/badpix16_20110413HST185556_v100.fits \
+	--out=$(DATAPATH)/wircamMask/mask.fits 
+	
+detrendval: imdetrend
+	valgrind $(VGOPTION) \
+	../bin/imdetrend --raw=$(DATAPATH)/wircamDetrend/1213828o.fits \
+	--dark=$(DATAPATH)/wircamDetrend/masterdark_020s_10Aw05_v100.fits \
+	--badpix=$(DATAPATH)/wircamDetrend/badpix_chihung_16bits.fits \
+	--flat=$(DATAPATH)/wircamDetrend/mastertwilightflat_Ks_10Aw05_v100.fits \
+	--out=$(DATAPATH)/wircamDetrend/test.fits --correctrefpix
+	
+skyval: imsky
+	valgrind $(VGOPTION) --max-stackframe=134360640 \
+	../bin/imsky --filelist=$(DATAPATH)/wircamSky/1213826s.fits,$(DATAPATH)/wircamSky/1213827s.fits,\
+	$(DATAPATH)/wircamSky/1213828s.fits  --output=$(DATAPATH)/wircamSky/skytest.fits \
+	--mask=$(DATAPATH)/wircamSky/1213826m.fits,$(DATAPATH)/wircamSky/1213827m.fits,\
+	$(DATAPATH)/wircamSky/1213828m.fits 	
+	
+	
+crunchval: imcrunch
+	valgrind $(VGOPTION) --max-stackframe=134360640  --track-origins=yes \
+	../bin/imcrunch --input=$(DATAPATH)/wircamSky/1213826s.fits --output=$(DATAPATH)/wircamSky/crunchtest.fits \
+	--method=median
+	
+skysubval: imskysub
+	valgrind $(VGOPTION) 	../bin/imskysub --detrend=$(DATAPATH)/wircamSkysub/1289569s.fits --sky=$(DATAPATH)/wircamSkysub/1289569y.fits \
+	--mask=$(DATAPATH)/wircamSkysub/badpix16_20110413HST185556_v100.fits --output=$(DATAPATH)/wircamSkysub/skysubtest.fits
+
+	

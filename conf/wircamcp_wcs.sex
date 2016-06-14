@@ -1,0 +1,87 @@
+# Default configuration file for SExtractor V1.2b14 - > 2.0
+# EB 26/10/97
+# (*) indicates parameters which can be omitted from this config file.
+
+#-------------------------------- Catalog ------------------------------------
+
+# this is overwritten on cmd line:
+CATALOG_NAME	/tmp/wcs.cat	# name of the output catalog
+CATALOG_TYPE	FITS_LDAC	# "ASCII_HEAD","ASCII","FITS_1.0" or "FITS_LDAC"
+#CATALOG_TYPE	ASCII_HEAD	# "ASCII_HEAD","ASCII","FITS_1.0" or "FITS_LDAC"
+
+# name of the file defining catalog contents:
+PARAMETERS_NAME	/cfht/conf/wircamcp_wcs.param	
+
+#------------------------------- Extraction ----------------------------------
+
+DETECT_TYPE	CCD		# "CCD" or "PHOTO" (*)
+FLAG_IMAGE	flag.fits	# filename for an input FLAG-image
+DETECT_MINAREA	4		# minimum number of pixels above threshold
+DETECT_THRESH	10		# <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+ANALYSIS_THRESH	10		# <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+
+# name of the file containing the filter:
+
+FILTER		N		# apply filter for detection ("Y" or "N")?
+FILTER_NAME     /cfht/conf/wircamcp_default.conv   # name of the file containing the filter
+
+
+DEBLEND_NTHRESH	32		# Number of deblending sub-thresholds
+DEBLEND_MINCONT	0.005		# Minimum contrast parameter for deblending
+
+CLEAN		Y		# Clean spurious detections? (Y or N)?
+CLEAN_PARAM	1.0		# Cleaning efficiency
+
+MASK_TYPE	CORRECT		# type of detection MASKing: can be one of
+				# "NONE", "BLANK" or "CORRECT"
+
+#------------------------------ Photometry -----------------------------------
+
+PHOT_APERTURES	4		# MAG_APER aperture diameter(s) in pixels
+PHOT_AUTOPARAMS	2.5, 3.5	# MAG_AUTO parameters: <Kron_fact>,<min_radius>
+
+SATUR_LEVEL	30000.0		# level (in ADUs) at which arises saturation
+
+MAG_ZEROPOINT	25.0		# magnitude zero-point
+MAG_GAMMA	4.0		# gamma of emulsion (for photographic scans)
+GAIN		2.9		# detector gain in e-/ADU.
+PIXEL_SCALE	0.3		# size of pixel in arcsec (0=use FITS WCS info).
+
+#------------------------- Star/Galaxy Separation ----------------------------
+
+SEEING_FWHM	0.9		# stellar FWHM in arcsec
+STARNNW_NAME	/cfht/conf/wircamcp_default.nnw	
+# Neural-Network_Weight table filename
+
+#------------------------------ Background -----------------------------------
+
+BACK_SIZE	64		# Background mesh: <size> or <width>,<height>
+BACK_FILTERSIZE	3		# Background filter: <size> or <width>,<height>
+
+BACKPHOTO_TYPE	GLOBAL		# can be "GLOBAL" or "LOCAL" (*)
+BACKPHOTO_THICK	24		# thickness of the background LOCAL annulus (*)
+
+#------------------------------ Check Image ----------------------------------
+
+CHECKIMAGE_TYPE	NONE		# can be one of "NONE", "BACKGROUND",
+# CHECKIMAGE_NAME	check.fits	# Filename for the check-image (*)
+
+#--------------------- Memory (change with caution!) -------------------------
+
+MEMORY_OBJSTACK	2000		# number of objects in stack
+MEMORY_PIXSTACK	400000		# number of pixels in stack
+MEMORY_BUFSIZE	1024		# number of lines in buffer
+
+#----------------------------- Miscellaneous ---------------------------------
+
+VERBOSE_TYPE	QUIET		# can be "QUIET", "NORMAL" or "FULL" (*)
+#VERBOSE_TYPE	NORMAL		# can be "QUIET", "NORMAL" or "FULL" (*)
+
+#------------------------------- New Stuff -----------------------------------
+
+WEIGHT_GAIN     Y
+INTERP_TYPE	NONE
+WEIGHT_TYPE	MAP_WEIGHT
+WEIGHT_IMAGE    /arrays/cfht/cfht_2/chyan/WIRCam/calib/badpix_chihung.fits
+#WEIGHT_IMAGE    /data/ula/wircam/calib/badpix_chihung.fits
+# Surprise!!

@@ -1,0 +1,328 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="class_image" kind="class" prot="public">
+    <compoundname>Image</compoundname>
+    <includes refid="image_8h" local="no">image.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_image_1a1328c6919ff234b3b02c0a5675915dc6" prot="private" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* Image::Filename</definition>
+        <argsstring></argsstring>
+        <name>Filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to FITS file name </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="93" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_image_1a05a349037cb7bd12be93154ac952d7ba" prot="private" static="no" mutable="no">
+        <type>fitsfile *</type>
+        <definition>fitsfile* Image::fptr</definition>
+        <argsstring></argsstring>
+        <name>fptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to FITS file name </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="98" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_image_1a51eb1216f218e90d83809aeb8db9e3a8" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_image_info" kindref="compound">ImageInfo</ref></type>
+        <definition>ImageInfo Image::HeaderInfo</definition>
+        <argsstring></argsstring>
+        <name>HeaderInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to FITS file name </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="103" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_image_1a65407137e4f4bec083416a287d752ef5" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* Image::ImageArray</definition>
+        <argsstring></argsstring>
+        <name>ImageArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A pointer to FITS file name </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="111" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_image_1acb1e89f3eb8721d374167d59e2e4e1e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Image::setFilename</definition>
+        <argsstring>(char *filename)</argsstring>
+        <name>setFilename</name>
+        <param>
+          <type>char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the filename <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer of char to the file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="113" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1aca3edfeb22cfb20a20a8014e39cc77aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char * Image::getFilename</definition>
+        <argsstring>()</argsstring>
+        <name>getFilename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the filename in this class.</para><para><simplesect kind="return"><para>a char pointer to the filename </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="115" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a7d94af737cc2b2fd9bc2ab1f31ab02b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::openFitfile</definition>
+        <argsstring>()</argsstring>
+        <name>openFitfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function opens a fits file and put the point of to the FITS file to a pointer.</para><para><simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="117" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="37" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a5f84b0aca62b184d07801f9960a21b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::closeFitfile</definition>
+        <argsstring>()</argsstring>
+        <name>closeFitfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function close a fits file.</para><para><simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="119" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a40affaec752136e62e6a49cb84cda025" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::setImageHeader</definition>
+        <argsstring>()</argsstring>
+        <name>setImageHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function read the FITS header into a structure a pointer.</para><para><simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>Get the current HDU position</para><para>Get information from PHU</para><para>Get RA in the unit of degree </para>        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="121" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="57" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a28eb3eff24689c4cc458d6e1206829bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_image_info" kindref="compound">ImageInfo</ref></type>
+        <definition>ImageInfo Image::getImageHeader</definition>
+        <argsstring>()</argsstring>
+        <name>getImageHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Return a image array of FITS file</para><para><simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="123" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1abe3422ad6771c4683cf60817ed66fb1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::setImageArray</definition>
+        <argsstring>()</argsstring>
+        <name>setImageArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method read the image in FITS into a image array in 1-D.</para><para><simplesect kind="return"><para>int if the method is done without error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="125" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="148" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1ae48ffbcc6275ff2a32174568ca80079d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double *</type>
+        <definition>double * Image::getImageArray</definition>
+        <argsstring>()</argsstring>
+        <name>getImageArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function opens a fits file and put the point of to the FITS file to a pointer.</para><para><simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="127" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="234" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1ae4d86df318224ce9d44ff30943c3632d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::SaveImage16B</definition>
+        <argsstring>(char *filename)</argsstring>
+        <name>SaveImage16B</name>
+        <param>
+          <type>char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function opens a fits file and put the point of to the FITS file to a pointer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer of char to the file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="129" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="242" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1afafc3b83b2f7da8e9579ac9d01c7d17a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Image::SaveImage32B</definition>
+        <argsstring>(char *filename)</argsstring>
+        <name>SaveImage32B</name>
+        <param>
+          <type>char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This function opens a fits file and put the point of to the FITS file to a pointer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is a pointer of char to the file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int if the FITS file is closed </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="131" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="301" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a58edd1c45b4faeb5f789b0d036d02313" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Image::Image</definition>
+        <argsstring>()</argsstring>
+        <name>Image</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="133" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="362" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a95ec8cd2a720f18bdda1fe2ae40bfe53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Image::Image</definition>
+        <argsstring>(char *filename)</argsstring>
+        <name>Image</name>
+        <param>
+          <type>char *</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This the default constructor of <ref refid="class_image" kindref="compound">Image</ref> class.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: the filename of FITS file </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="135" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="368" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="class_image_1a0294f63700543e11c0f0da85601c7ae5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Image::~Image</definition>
+        <argsstring>()</argsstring>
+        <name>~Image</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="class_image" kindref="compound">Image</ref> destructor. The destructor of <ref refid="class_image" kindref="compound">Image</ref> class.</para><para>This destructor release the the image array and close the opened fitsfile. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="139" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.cpp" bodystart="377" bodyend="380"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The basic images class of image operation. </para>    </briefdescription>
+    <detaileddescription>
+<para>The default constructor take the FITS filename as a input. Then it will establish a data structure to store the FITS header information. The data is also imported in a 1-D array as well. This class also contains the methods for image saving and loading. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Image</label>
+        <link refid="class_image"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>HeaderInfo</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ImageInfo</label>
+        <link refid="struct_image_info"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/image.h" line="88" bodyfile="/Users/chyan/Documents/workspace/readimage/src/image.h" bodystart="88" bodyend="141"/>
+    <listofallmembers>
+      <member refid="class_image_1a5f84b0aca62b184d07801f9960a21b6c" prot="public" virt="non-virtual"><scope>Image</scope><name>closeFitfile</name></member>
+      <member refid="class_image_1a1328c6919ff234b3b02c0a5675915dc6" prot="private" virt="non-virtual"><scope>Image</scope><name>Filename</name></member>
+      <member refid="class_image_1a05a349037cb7bd12be93154ac952d7ba" prot="private" virt="non-virtual"><scope>Image</scope><name>fptr</name></member>
+      <member refid="class_image_1aca3edfeb22cfb20a20a8014e39cc77aa" prot="public" virt="non-virtual"><scope>Image</scope><name>getFilename</name></member>
+      <member refid="class_image_1ae48ffbcc6275ff2a32174568ca80079d" prot="public" virt="non-virtual"><scope>Image</scope><name>getImageArray</name></member>
+      <member refid="class_image_1a28eb3eff24689c4cc458d6e1206829bc" prot="public" virt="non-virtual"><scope>Image</scope><name>getImageHeader</name></member>
+      <member refid="class_image_1a51eb1216f218e90d83809aeb8db9e3a8" prot="private" virt="non-virtual"><scope>Image</scope><name>HeaderInfo</name></member>
+      <member refid="class_image_1a58edd1c45b4faeb5f789b0d036d02313" prot="public" virt="non-virtual"><scope>Image</scope><name>Image</name></member>
+      <member refid="class_image_1a95ec8cd2a720f18bdda1fe2ae40bfe53" prot="public" virt="non-virtual"><scope>Image</scope><name>Image</name></member>
+      <member refid="class_image_1a65407137e4f4bec083416a287d752ef5" prot="public" virt="non-virtual"><scope>Image</scope><name>ImageArray</name></member>
+      <member refid="class_image_1a7d94af737cc2b2fd9bc2ab1f31ab02b6" prot="public" virt="non-virtual"><scope>Image</scope><name>openFitfile</name></member>
+      <member refid="class_image_1ae4d86df318224ce9d44ff30943c3632d" prot="public" virt="non-virtual"><scope>Image</scope><name>SaveImage16B</name></member>
+      <member refid="class_image_1afafc3b83b2f7da8e9579ac9d01c7d17a" prot="public" virt="non-virtual"><scope>Image</scope><name>SaveImage32B</name></member>
+      <member refid="class_image_1acb1e89f3eb8721d374167d59e2e4e1e6" prot="public" virt="non-virtual"><scope>Image</scope><name>setFilename</name></member>
+      <member refid="class_image_1abe3422ad6771c4683cf60817ed66fb1f" prot="public" virt="non-virtual"><scope>Image</scope><name>setImageArray</name></member>
+      <member refid="class_image_1a40affaec752136e62e6a49cb84cda025" prot="public" virt="non-virtual"><scope>Image</scope><name>setImageHeader</name></member>
+      <member refid="class_image_1a0294f63700543e11c0f0da85601c7ae5" prot="public" virt="non-virtual"><scope>Image</scope><name>~Image</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

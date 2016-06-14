@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.7.1">
+  <compounddef id="struct_non_linear_info" kind="struct" prot="public">
+    <compoundname>NonLinearInfo</compoundname>
+    <includes refid="process_8h" local="no">process.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double NonLinearInfo::param[MaxNLCMatrix][MaxChipInstalled][3]</definition>
+        <argsstring>[MaxNLCMatrix][MaxChipInstalled][3]</argsstring>
+        <name>param</name>
+        <briefdescription>
+<para>The non-linear correction correction matrix for each chip. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="21" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" prot="public" static="no" mutable="no">
+        <type>char *</type>
+        <definition>char* NonLinearInfo::date[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>date</name>
+        <briefdescription>
+<para>Date of derived non-linear correction matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="23" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" prot="public" static="no" mutable="no">
+        <type>long</type>
+        <definition>long NonLinearInfo::jd[MaxNLCMatrix]</definition>
+        <argsstring>[MaxNLCMatrix]</argsstring>
+        <name>jd</name>
+        <briefdescription>
+<para>Julian day of derived non-lineae correction matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="25" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This structure is used for storing correction matrix when carrying out non-linear correction. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/Users/chyan/Documents/workspace/readimage/src/process.h" line="19" bodyfile="/Users/chyan/Documents/workspace/readimage/src/process.h" bodystart="19" bodyend="26"/>
+    <listofallmembers>
+      <member refid="struct_non_linear_info_1af5149b7ad9ac01be1c7dfc7c8e094c9b" prot="public" virt="non-virtual"><scope>NonLinearInfo</scope><name>date</name></member>
+      <member refid="struct_non_linear_info_1aaa4afd9e48031d64f153821c4c464ced" prot="public" virt="non-virtual"><scope>NonLinearInfo</scope><name>jd</name></member>
+      <member refid="struct_non_linear_info_1a8e66dc7779b66a463668839688de3bfa" prot="public" virt="non-virtual"><scope>NonLinearInfo</scope><name>param</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
