@@ -90,7 +90,7 @@ install: $(TARGET)
       cp  -fp ../bin/$$file $(INSTALLPATH) ;\
 	done
 	 
-pushiaa:
+pushmenka:
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/Makefile* -e ssh chyan@menka:/data/local/chyan/imtools/src	
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/*.h -e ssh chyan@menka:/data/local/chyan/imtools/src
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/*.cpp -e ssh chyan@menka:/data/local/chyan/imtools/src
@@ -98,6 +98,15 @@ pushiaa:
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/php/* -e ssh chyan@menka:/data/local/chyan/imtools/php/
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/perl/* -e ssh chyan@menka:/data/local/chyan/imtools/perl/
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/conf/* -e ssh chyan@menka:/data/local/chyan/imtools/conf/
+	
+pushprocyon:
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/Makefile* -e ssh chyan@procyon:~chyan/imtools/src	
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/*.h -e ssh chyan@procyon:~chyan/imtools/src
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/*.cpp -e ssh chyan@procyon:~chyan/imtools/src
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/Doxygen/* -e ssh chyan@procyon:~chyan/imtools/Doxygen/
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/php/* -e ssh chyan@procyon:~chyan/imtools/php/
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/perl/* -e ssh chyan@procyon:~chyan/imtools/perl/
+	rsync -arvzu /Users/chyan/Documents/workspace/imtools/conf/* -e ssh chyan@procyon:~chyan/imtools/conf/
 
 pushcfht:
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/src/Makefile* -e "ssh -1 -p 2266" chyan@polena:/data/chyan/imtools/src/	
@@ -117,7 +126,7 @@ pushcfhthome:
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/perl/* -e "ssh -1 -p 2266" chyan@polena:/h/chyan/imtools/perl/
 	rsync -arvzu /Users/chyan/Documents/workspace/imtools/conf/* -e "ssh -1 -p 2266" chyan@polena:/h/chyan/imtools/conf/
 	
-release: pushcfht pushcfhthome pushiaa	
+release: pushcfht pushcfhthome pushprocyon	
 
 clean:
 	rm -f $(OBJS) $(TARGET)

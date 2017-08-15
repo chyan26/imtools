@@ -15,6 +15,7 @@
  
 
 =cut
+require HTTP::Request;
 
 use sigtrap 'handler' => \&userStop, 'INT';
 use warnings;
@@ -22,6 +23,8 @@ use strict;
 use Cwd;
 use Getopt::Long;
 use LWP::UserAgent;
+use XML::LibXML;
+
 
 our $SCRIPT_NAME = 'wircamrunidget';
 our %config=(
@@ -166,20 +169,23 @@ if ($config{RUNID} eq ""){
 	# Starting to query the CFHT data base
 	$ua = LWP::UserAgent->new;
 	$ua->timeout(10);
-	$ua->env_proxy;
+	#$ua->env_proxy;
 	  
+	# Query CADC database instead of CFHT database.	
+	$url="http://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/tap/sync?REQUEST=doQuery&LANG=ADQL&QUERY=SELECT+*+FROM+caom2.Observation+
+		AS+o+JOIN+caom2.Plane+AS+p+ON+o.obsID=p.obsID+WHERE+o.proposal_id=\'".$config{RUNID}."\'";
 	
-	if ($config{RUNID} =~ /^0[5467]/){
-		$url='http://www.cfht.hawaii.edu/~chyan/aodolist.php?runid='.$config{RUNID};	
-		$response = $ua->get($url); 
-	} elsif ($config{RUNID} =~ /^0[89]/) {
-		$url='http://www.cfht.hawaii.edu/~chyan/bodolist.php?runid='.$config{RUNID};	
-		$response = $ua->get($url); 	
-	} else {	
-		$url='http://www.cfht.hawaii.edu/~chyan/odolist.php?runid='.$config{RUNID};
-		$response = $ua->get($url);
-	}	
+	$response = HTTP::Request->new(GET => $url);
+	#$response = $ua->get($url);
+	print "@{[$response->content]}";	
 	
+	my $file='/Users/chyan/Downloads/result_nmnkaaqu5wk7zuqh.xml';
+	my $dom = XML::LibXML->load_xml(location => $file);	
+	
+	foreach my $table ($dom->findnodes('//VOTABLE')) {
+    	say $table->to_literal();
+	} 
+
 	@words=split("<br>",$response->content);
 	
 	if (scalar(@words) == 1){
